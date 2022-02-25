@@ -3,7 +3,7 @@ const request = require('request');
 
 const fetchBreedDescription = function(breedName, callback) {
 
-  request(`https://api.thcatapi.com/v1/breeds/search?q=${breedName}`, (error, response, body) => {
+  request(`https://api.thecatapi.com/v1/breeds/search?q=${breedName}`, (error, response, body) => {
     if (error) {
       callback(error, null);
       return;
@@ -11,7 +11,7 @@ const fetchBreedDescription = function(breedName, callback) {
 
     const data = JSON.parse(body);
     if (data.length === 0) {
-      callback(`breed name not found`, null);
+      callback(`breed name: ${breedName} not found`, null);
 
     } else {
       callback(null, data[0].description);
